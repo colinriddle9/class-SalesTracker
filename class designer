@@ -1,0 +1,124 @@
+/**
+ * Class Designer - Models a designer working at Walton Silicon Enterprise
+ *
+ * @author Colin Riddle
+ * @version 7/5/20
+ */
+public class Designer
+{
+    private int id;      // designer's id
+    private String name; // designer's name
+    private int years;   // Determines bonus; range 1-6
+    private String productCode;  //The product code of the designer's product
+    private int sales;   // total sales of product  in 000s in last 6 months
+    private int bonus;     // total bonus in WSE shares   
+    private static int nextId = 0;
+    private int counter;
+    /**
+     * Constructor for objects of class designer
+     */
+    public Designer(String aName)
+    {
+        super();
+        this.name = aName;
+        this.nextId++;
+        this.id = nextId;
+        this.counter = 0;
+    }
+
+    /**
+     * returns sales of the designer's product in the last 6 months
+     */
+    public int getSales()
+    {
+        return this.sales;
+    }
+
+    /**
+     * sets sales for the designer's product to aSales
+     */
+    public void setSales(int aSales)
+    {
+        this.sales = aSales;
+    }
+
+    /**
+     * returns the designer's ID
+     */
+    public int getId()
+    {
+        return this.id;
+    }
+
+    /**
+     * returns the designer's name
+     */
+    public String getName()
+    {
+        return this.name;
+    }
+
+    /**
+     * returns the number of years the designer has worked for the company
+     */
+    public int getYears()
+    {
+        return this.years;
+    }
+
+    /**
+     * sets the number of years the designer has worked for the company, years,
+     * to aYears.
+     */
+    public void setYears(int aYears)
+    {
+      
+       this.years = aYears;
+      
+    }
+
+    /**
+     * returns the productCode
+     */
+    public String getProductCode()
+    {
+        return this.productCode;
+    }
+
+    /**
+     *
+     * sets the productName to aProductName
+     */
+    public void setProductCode(String aProductName)
+    {
+        this.productCode = aProductName;
+    }
+
+    /**
+     * returns the bonus
+     */
+    public int getBonus()
+    {
+        return this.bonus;
+    }
+
+    /**
+     * sets the bonus to aBonus
+     */
+    public void setBonus(int aBonus)
+    {
+        this.bonus = aBonus;
+    }
+
+    /**
+     * 
+     */
+    public String toString()
+    {
+       String result = "";
+       for (int c = 0; c < counter; c++)
+       {
+          result += name[c].toString();
+       }
+       return result;
+       }
