@@ -1,0 +1,76 @@
+import java.util.*;
+import java.io.*;
+import ou.*;
+
+/**
+ * Class SalesTracker - Tracks sales of designers to calculate bonus and show bonus data.
+ * 
+ * @author Colin Riddle 
+ * @version 7/5/20
+ */
+public class SalesTracker
+{
+    List<Designer>designers = new ArrayList<Designer>();
+   
+    /**
+     * Constructor for objects of class SalesTracker
+     */
+    public SalesTracker()
+    {
+
+    }
+   
+    /**
+     * Constructor for objects of class SalesTracker
+     */
+    public SalesTracker(ArrayList<Designer>array)
+    {
+        this.designers = array;
+    }
+   
+    /**
+     * Calculates and returns bonus.
+     */
+    private int computeBonus(Designer aDesigner)
+    {
+       return (aDesigner.getYears() * aDesigner.getSales()/10);
+
+    }
+   
+    /**
+     * 
+     */
+    public void readDesignerData()
+    {
+      String file_path = OUFileChooser.getFilename();
+      File file = new File(file_path);
+      try
+      {
+         BufferedReader br = new BufferedReader(new FileReader(file));
+         String line;
+         while ((line = br.readLine()) != null)
+           {Scanner sc = new Scanner(line);
+            sc.useDelimiter(",");
+            Designer obj = new Designer(null);
+            for(int i = 0; i < 4; i++ )
+            {
+               String currentToken = sc.next();
+               if(i == 0) 
+                 obj = new Designer(currentToken);
+               else if (i == 1)
+                 obj.setYears(Integer.parseInt(currentToken));
+               else if (i == 2)
+                 obj.setProductCode(currentToken);
+               else
+                 obj.setSales(Integer.parseInt(currentToken));
+            }
+            obj.setBonus(computeBonus(obj));
+            designers.add(obj);
+         }
+         }
+         catch(IOException e)
+         {
+            System.out.println("IO_EXCEPTION");
+            e.printStackTrace();
+         }
+      }
